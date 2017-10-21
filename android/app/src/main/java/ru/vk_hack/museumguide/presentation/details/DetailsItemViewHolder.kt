@@ -1,6 +1,7 @@
 package ru.vk_hack.museumguide.presentation.details
 
 import ru.vk_hack.museumguide.data.models.ImageItem
+import ru.vk_hack.museumguide.data.models.Painting
 import ru.vk_hack.museumguide.databinding.DetailsItemBinding
 import ru.vk_hack.museumguide.presentation.list.DataBindingViewHolder
 import ru.vk_hack.museumguide.utils.ImageUtils
@@ -8,7 +9,7 @@ import ru.vk_hack.museumguide.utils.ImageUtils
 /**
  * Created by bagrusss on 21.10.17
  */
-class DetailsItemViewHolder(binding: DetailsItemBinding) : DataBindingViewHolder<DetailsItemBinding, ImageItem>(binding) {
+class DetailsItemViewHolder(binding: DetailsItemBinding) : DataBindingViewHolder<DetailsItemBinding, Painting>(binding) {
 
     private val bindingData = DetailsItemData()
 
@@ -16,7 +17,7 @@ class DetailsItemViewHolder(binding: DetailsItemBinding) : DataBindingViewHolder
         binding.data = bindingData
     }
 
-    override fun onBind(data: ImageItem) {
+    override fun onBind(data: Painting) {
         bindingData.author.set(data.title)
         ImageUtils.loadImage(binding.imageView, data.pictureUrl)
     }

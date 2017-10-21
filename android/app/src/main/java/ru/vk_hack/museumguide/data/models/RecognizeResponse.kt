@@ -18,7 +18,7 @@ data class RecognizeResponse(
         @SerializedName("description") val description: String): Serializable
 
 fun RecognizeResponse.mergeData(detailsData: DetailsData) {
-    detailsData.description.set(description)
+    detailsData.description.set(if (description.isNotEmpty()) description else "Описание отсутствует")
     detailsData.fullName.set(title)
     detailsData.location.set("Третьяковская галерея")
     detailsData.author.set(author.fullName)

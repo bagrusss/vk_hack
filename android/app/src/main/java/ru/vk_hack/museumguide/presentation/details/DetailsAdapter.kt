@@ -3,26 +3,20 @@ package ru.vk_hack.museumguide.presentation.details
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import ru.vk_hack.museumguide.data.models.ImageItem
+import ru.vk_hack.museumguide.data.models.Painting
 import ru.vk_hack.museumguide.databinding.DetailsItemBinding
 import ru.vk_hack.museumguide.presentation.list.BindedRecyclerViewAdapter
 
 /**
  * Created by bagrusss on 21.10.17
  */
-class DetailsAdapter: BindedRecyclerViewAdapter<DetailsItemViewHolder, ImageItem>() {
+class DetailsAdapter: BindedRecyclerViewAdapter<DetailsItemViewHolder, Painting>() {
 
-    private var items = listOf(ImageItem(title = "Морской пейзаж",
-                                         pictureUrl = "https://www.tretyakovgallery.ru/upload/iblock/951/95170e80eebc1f942139bf69536af350.jpg",
-                                         url = "некоторый текст"),
-                               ImageItem(title = "Морской пейзаж",
-                                         pictureUrl = "https://www.tretyakovgallery.ru/upload/iblock/951/95170e80eebc1f942139bf69536af350.jpg",
-                                         url = "некоторый текст"),
-                               ImageItem(title = "Морской пейзаж",
-                                         pictureUrl = "https://www.tretyakovgallery.ru/upload/iblock/951/95170e80eebc1f942139bf69536af350.jpg",
-                                         url = "некоторый текст"))
+    private var items = emptyList<Painting>()
 
-    override fun swap(items: List<ImageItem>) {
+    override fun swap(items: List<Painting>) {
         this.items = items
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = items.size

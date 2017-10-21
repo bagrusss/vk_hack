@@ -83,6 +83,8 @@ class DetailsActivity : AppCompatActivity(), DetailsListener {
 
         title = result.title
         ImageUtils.loadImage(binding.image, result.image)
+
+        imagesAdapter.swap(result.author.paintings)
     }
 
     companion object {

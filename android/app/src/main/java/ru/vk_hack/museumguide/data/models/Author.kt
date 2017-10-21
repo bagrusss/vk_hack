@@ -9,5 +9,5 @@ import java.io.Serializable
  */
 data class Author (
         @SerializedName("full_name") val fullName: String,
-        @SerializedName("paintings") val author: List<Painting>
+        @SerializedName("paintings") val paintings: List<Painting>
 ): Serializable
