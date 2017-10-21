@@ -6,8 +6,11 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import kotlinx.android.synthetic.main.event_content.view.*
 import ru.vk_hack.museumguide.R
 import ru.vk_hack.museumguide.data.models.FeedEvent
 import ru.vk_hack.museumguide.databinding.ActivityEventBinding
@@ -18,10 +21,16 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventBinding
 
     private lateinit var toolbar: Toolbar
+    private lateinit var recyclerView: RecyclerView
+
+    private val imagesAdapter = DetailsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_event)
+        recyclerView = binding.include.author_more_list
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = imagesAdapter
 
         toolbar = binding.toolbar
 
