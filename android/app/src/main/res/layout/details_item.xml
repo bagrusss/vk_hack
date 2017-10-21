@@ -35,7 +35,7 @@
             android:maxLines="2"
             android:text="@{data.author}"
             android:textColor="@android:color/white"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />

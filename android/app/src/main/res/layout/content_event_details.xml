@@ -30,7 +30,7 @@
                 android:tint="@android:color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_home_black_24dp" />
+                app:srcCompat="@drawable/ic_title" />
 
             <LinearLayout
                 android:id="@+id/full_title_layout"
@@ -59,7 +59,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{data.title}"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <ImageView
@@ -70,7 +71,7 @@
                 android:tint="@android:color/white"
                 app:layout_constraintStart_toStartOf="@+id/full_title"
                 app:layout_constraintTop_toBottomOf="@+id/full_title_layout"
-                app:srcCompat="@drawable/ic_home_black_24dp" />
+                app:srcCompat="@drawable/ic_location" />
 
             <LinearLayout
                 android:id="@+id/location_layout"
@@ -99,7 +100,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{data.location}"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <ImageView
@@ -110,7 +112,7 @@
                 android:tint="@android:color/white"
                 app:layout_constraintStart_toStartOf="@+id/location_image"
                 app:layout_constraintTop_toBottomOf="@+id/location_layout"
-                app:srcCompat="@drawable/ic_notifications_black_24dp" />
+                app:srcCompat="@drawable/ic_date" />
 
             <LinearLayout
                 android:id="@+id/dates_layout"
@@ -139,7 +141,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{data.dates}"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <ImageView
@@ -150,7 +153,7 @@
                 android:tint="@android:color/white"
                 app:layout_constraintStart_toStartOf="@+id/location_image"
                 app:layout_constraintTop_toBottomOf="@+id/dates_layout"
-                app:srcCompat="@drawable/ic_notifications_black_24dp" />
+                app:srcCompat="@drawable/ic_description" />
 
             <LinearLayout
                 android:id="@+id/description_layout"
@@ -179,7 +182,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{data.description}"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
 
