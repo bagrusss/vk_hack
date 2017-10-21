@@ -13,7 +13,7 @@ class FeedViewHolder(binding: EventItemBinding): DataBindingViewHolder<EventItem
     private val title = binding.titleText
 
     override fun onBind(data: Event) {
-
+        
     }
 
 }

@@ -11,8 +11,24 @@ import ru.vk_hack.museumguide.presentation.list.BindedRecyclerViewAdapter
  */
 class FeedAdapter : BindedRecyclerViewAdapter<FeedViewHolder, Event>() {
 
+    private val stubEvents = listOf(Event(picture = "https://www.tretyakovgallery.ru/upload/iblock/951/95170e80eebc1f942139bf69536af350.jpg",
+                                          title = "Город и люди. Москва в графике ХХ века",
+                                          location = "Новая Третьяковка",
+                                          description = "А.А. Дейнека. Площадь Свердлова. 1941–1946. Серия «Москва военная». Бумага, гуашь, темпера, уголь. 67 х 81,7. Третьяковская галерея",
+                                          dates = "1 октября 2017 - 28 января 2018"),
+                                    Event(picture = "https://www.tretyakovgallery.ru/upload/iblock/951/95170e80eebc1f942139bf69536af350.jpg",
+                                          title = "Город и люди. Москва в графике ХХ века",
+                                          location = "Новая Третьяковка",
+                                          description = "А.А. Дейнека. Площадь Свердлова. 1941–1946. Серия «Москва военная». Бумага, гуашь, темпера, уголь. 67 х 81,7. Третьяковская галерея",
+                                          dates = "1 октября 2017 - 28 января 2018"),
+                                    Event(picture = "https://www.tretyakovgallery.ru/upload/iblock/951/95170e80eebc1f942139bf69536af350.jpg",
+                                          title = "Город и люди. Москва в графике ХХ века",
+                                          location = "Новая Третьяковка",
+                                          description = "А.А. Дейнека. Площадь Свердлова. 1941–1946. Серия «Москва военная». Бумага, гуашь, темпера, уголь. 67 х 81,7. Третьяковская галерея",
+                                          dates = "1 октября 2017 - 28 января 2018"))
 
-    override fun getItemCount() = 0
+
+    override fun getItemCount() = stubEvents.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,7 +37,7 @@ class FeedAdapter : BindedRecyclerViewAdapter<FeedViewHolder, Event>() {
     }
 
     override fun getData(position: Int): Event {
-        return 0 //stub
+        return stubEvents[position]
     }
 
 }
