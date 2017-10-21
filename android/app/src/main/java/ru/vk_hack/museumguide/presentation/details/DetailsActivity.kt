@@ -10,7 +10,8 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import ru.vk_hack.museumguide.R
-import ru.vk_hack.museumguide.data.models.FeedEvent
+import ru.vk_hack.museumguide.data.models.RecognizeResponse
+import ru.vk_hack.museumguide.data.models.mergeData
 import ru.vk_hack.museumguide.databinding.ActivityDetailsBinding
 import ru.vk_hack.museumguide.utils.ImageUtils
 
@@ -47,7 +48,7 @@ class DetailsActivity : AppCompatActivity(), DetailsListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         intent.getSerializableExtra(KEY_DATA)?.let {
-            fillDataEvent(it as FeedEvent)
+            fillDataEvent(it as RecognizeResponse)
         }
     }
 
@@ -77,9 +78,11 @@ class DetailsActivity : AppCompatActivity(), DetailsListener {
 
     }
 
-    private fun fillDataEvent(event: FeedEvent) {
-        title = event.title
-        ImageUtils.loadImage(binding.image, event.picture)
+    private fun fillDataEvent(result: RecognizeResponse) {
+        result.mergeData(detailsData)
+
+        title = result.title
+        ImageUtils.loadImage(binding.image, result.image)
     }
 
     companion object {
@@ -87,9 +90,9 @@ class DetailsActivity : AppCompatActivity(), DetailsListener {
         private const val KEY_DATA = "data"
 
         @JvmStatic
-        fun start(context: Context, event: FeedEvent? = null) {
+        fun start(context: Context, result: RecognizeResponse) {
             val intent = Intent(context, DetailsActivity::class.java)
-            intent.putExtra(KEY_DATA, event)
+            intent.putExtra(KEY_DATA, result)
             context.startActivity(intent)
         }
     }

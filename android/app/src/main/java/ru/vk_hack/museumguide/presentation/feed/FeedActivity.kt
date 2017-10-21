@@ -22,6 +22,8 @@ import ru.vk_hack.museumguide.BuildConfig
 import ru.vk_hack.museumguide.R
 import ru.vk_hack.museumguide.data.Network
 import ru.vk_hack.museumguide.databinding.ActivityFeedBinding
+import ru.vk_hack.museumguide.presentation.details.DetailsActivity
+import ru.vk_hack.museumguide.presentation.event.EventDetailsActivity
 import ru.vk_hack.museumguide.utils.ImageUtils
 import java.io.File
 
@@ -67,7 +69,7 @@ class FeedActivity : AppCompatActivity() {
     }
 
     private lateinit var file : File
-    var progress : ProgressDialog? = null
+    private lateinit var progress : ProgressDialog
     private fun recognizeFile() {
         file = File(filesDir, "my_images/" + System.currentTimeMillis().toString())
         val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
@@ -80,9 +82,11 @@ class FeedActivity : AppCompatActivity() {
         val uri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, file)
         val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
-        progress = ProgressDialog(this)
-        progress?.setMessage("Обработка изображения...")
-        progress?.show()
+        progress = ProgressDialog(this).apply {
+            setMessage("Обработка изображения...")
+            show()
+        }
+
         startActivityForResult(cameraIntent, CAMERA_REQUEST_BASE)
     }
 
@@ -95,10 +99,11 @@ class FeedActivity : AppCompatActivity() {
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe({ it ->
                                             Log.d("res", it.toString())
-                                            progress?.dismiss()
+                                            DetailsActivity.start(this, it)
+                                            progress.dismiss()
                                         }, { error ->
                                             error.printStackTrace()
-                                            progress?.dismiss()
+                                            progress.dismiss()
                                         })
                 disposables.add(disposable)
             }
