@@ -13,7 +13,7 @@ import ru.vk_hack.museumguide.data.models.FeedEvent
 import ru.vk_hack.museumguide.databinding.ActivityEventBinding
 import ru.vk_hack.museumguide.utils.ImageUtils
 
-class EventActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEventBinding
 
@@ -59,7 +59,7 @@ class EventActivity : AppCompatActivity() {
 
         @JvmStatic
         fun start(context: Context, event: FeedEvent? = null) {
-            val intent = Intent(context, EventActivity::class.java)
+            val intent = Intent(context, DetailsActivity::class.java)
             intent.putExtra(KEY_DATA, event)
             context.startActivity(intent)
         }

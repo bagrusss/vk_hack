@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.details.EventActivity"
+            android:name=".presentation.details.DetailsActivity"
             android:label="@string/title_activity_event"
             android:parentActivityName="android.support.v7.app.AppCompatActivity"
             android:theme="@style/AppTheme.NoActionBar">
