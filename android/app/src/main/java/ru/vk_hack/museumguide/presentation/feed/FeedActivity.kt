@@ -1,6 +1,7 @@
 package ru.vk_hack.museumguide.presentation.feed
 
 import android.Manifest
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.databinding.DataBindingUtil
@@ -66,6 +67,7 @@ class FeedActivity : AppCompatActivity() {
     }
 
     private lateinit var file : File
+    var progress : ProgressDialog? = null
     private fun recognizeFile() {
         file = File(filesDir, "my_images/" + System.currentTimeMillis().toString())
         val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
@@ -78,6 +80,9 @@ class FeedActivity : AppCompatActivity() {
         val uri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, file)
         val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+        progress = ProgressDialog(this)
+        progress?.setMessage("Обработка изображения...")
+        progress?.show()
         startActivityForResult(cameraIntent, CAMERA_REQUEST_BASE)
     }
 
@@ -90,8 +95,10 @@ class FeedActivity : AppCompatActivity() {
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe({ it ->
                                             Log.d("res", it.toString())
+                                            progress?.dismiss()
                                         }, { error ->
                                             error.printStackTrace()
+                                            progress?.dismiss()
                                         })
                 disposables.add(disposable)
             }
