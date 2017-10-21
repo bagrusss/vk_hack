@@ -99,4 +99,5 @@
     <string name="location">Местоположение</string>
     <string name="author">Автор</string>
     <string name="title_activity_event_details">EventDetailsActivity</string>
+    <string name="dates">Даты проведения</string>
 </resources>
