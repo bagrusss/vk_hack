@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="@color/black_background"
         tools:context="ru.vk_hack.museumguide.presentation.details.DetailsActivity">
 
         <android.support.design.widget.AppBarLayout
