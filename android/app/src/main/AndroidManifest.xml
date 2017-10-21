@@ -25,8 +25,8 @@
         <activity
             android:name=".presentation.details.DetailsActivity"
             android:label="@string/title_activity_event"
-            android:screenOrientation="portrait"
             android:parentActivityName="android.support.v7.app.AppCompatActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -46,8 +46,8 @@
         <activity
             android:name=".presentation.event.EventDetailsActivity"
             android:label="@string/title_activity_event_details"
-            android:screenOrientation="portrait"
             android:parentActivityName="android.support.v7.app.AppCompatActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
