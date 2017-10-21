@@ -1,10 +1,10 @@
-package ru.vk_hack.museumguide
+package ru.vk_hack.museumguide.presentation
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.content.Intent
-
+import ru.vk_hack.museumguide.R
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {

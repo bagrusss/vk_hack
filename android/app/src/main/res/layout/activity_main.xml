@@ -4,7 +4,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.vk_hack.museumguide.MainActivity">
+    tools:context="ru.vk_hack.museumguide.presentation.MainActivity">
 
     <Button
         android:id="@+id/recognize_btn"
