@@ -16,16 +16,16 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:paddingTop="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="ru.vk_hack.museumguide.presentation.details.DetailsActivity"
-        tools:showIn="@layout/activity_event">
+        tools:showIn="@layout/activity_details">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/audio_button"
