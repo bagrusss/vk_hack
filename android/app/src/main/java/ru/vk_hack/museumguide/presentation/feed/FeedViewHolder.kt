@@ -1,5 +1,6 @@
 package ru.vk_hack.museumguide.presentation.feed
 
+import com.bumptech.glide.Glide
 import ru.vk_hack.museumguide.data.models.Event
 import ru.vk_hack.museumguide.databinding.EventItemBinding
 import ru.vk_hack.museumguide.presentation.list.DataBindingViewHolder
@@ -9,11 +10,19 @@ import ru.vk_hack.museumguide.presentation.list.DataBindingViewHolder
  */
 class FeedViewHolder(binding: EventItemBinding): DataBindingViewHolder<EventItemBinding, Event>(binding) {
 
-    private val feedImage = binding.imageSrc
-    private val title = binding.titleText
+    private val bindingData = FeedData()
+
+    init {
+        binding.data = bindingData
+    }
 
     override fun onBind(data: Event) {
-        
+        Glide.with(binding.root.context)
+             .load(data.picture)
+             .centerCrop()
+             .into(binding.imageSrc)
+
+        bindingData.title.set(data.title)
     }
 
 }

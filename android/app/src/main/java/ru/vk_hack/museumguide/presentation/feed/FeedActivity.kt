@@ -2,25 +2,31 @@ package ru.vk_hack.museumguide.presentation.feed
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.content.Intent
+import android.databinding.DataBindingUtil
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import ru.vk_hack.museumguide.R
+import ru.vk_hack.museumguide.databinding.ActivityFeedBinding
 
 
-class FeedActivity : AppCompatActivity(), View.OnClickListener {
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.recognize_btn -> recognize()
-        }
-    }
+class FeedActivity : AppCompatActivity() {
 
-    private lateinit var recognizeBtn : View
+    private lateinit var binding: ActivityFeedBinding
+
+    private lateinit var feedRecycler: RecyclerView
+
+    private val adapter = FeedAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        recognizeBtn = findViewById(R.id.recognize_btn)
-        recognizeBtn.setOnClickListener(this)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_feed)
+        binding.recognizeBtn.setOnClickListener {
+            recognize()
+        }
+        feedRecycler = binding.feedList
+        feedRecycler.layoutManager = LinearLayoutManager(this)
+        feedRecycler.adapter = adapter
     }
 
     private fun recognize() {
