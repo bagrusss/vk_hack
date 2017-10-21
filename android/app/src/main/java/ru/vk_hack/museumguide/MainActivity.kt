@@ -1,34 +1,31 @@
 package ru.vk_hack.museumguide
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import android.view.View
+import android.content.Intent
 
-class MainActivity : AppCompatActivity() {
 
-    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_home -> {
-                message.setText(R.string.title_home)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_dashboard -> {
-                message.setText(R.string.title_dashboard)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
-                return@OnNavigationItemSelectedListener true
-            }
+
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.recognize_btn -> recognize()
         }
-        false
     }
+
+    private lateinit var recognizeBtn : View
+    private val CAMERA_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        recognizeBtn = findViewById(R.id.recognize_btn)
+        recognizeBtn.setOnClickListener(this)
+    }
 
-        navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+    private fun recognize() {
+        val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(cameraIntent, CAMERA_REQUEST)
     }
 }

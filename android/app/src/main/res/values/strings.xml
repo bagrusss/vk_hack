@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">Museum guide</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="recognize">Узнать что это</string>
 </resources>
