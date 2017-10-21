@@ -1,6 +1,7 @@
 package ru.vk_hack.museumguide.presentation.event
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_event_details.*
@@ -22,7 +23,8 @@ class EventDetailsActivity : AppCompatActivity() {
 
         @JvmStatic
         fun start(context: Context, event: FeedEvent) {
-
+            context.startActivity(Intent(context, EventDetailsActivity::class.java)
+                                        .apply { putExtra(KEY_DATA, event) })
         }
     }
 }

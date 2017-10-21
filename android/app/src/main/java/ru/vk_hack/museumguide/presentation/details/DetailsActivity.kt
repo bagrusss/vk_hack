@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -12,12 +11,12 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import ru.vk_hack.museumguide.R
 import ru.vk_hack.museumguide.data.models.FeedEvent
-import ru.vk_hack.museumguide.databinding.ActivityEventBinding
+import ru.vk_hack.museumguide.databinding.ActivityDetailsBinding
 import ru.vk_hack.museumguide.utils.ImageUtils
 
 class DetailsActivity : AppCompatActivity(), DetailsListener {
 
-    private lateinit var binding: ActivityEventBinding
+    private lateinit var binding: ActivityDetailsBinding
 
     private lateinit var toolbar: Toolbar
     private lateinit var recyclerView: RecyclerView
@@ -28,7 +27,7 @@ class DetailsActivity : AppCompatActivity(), DetailsListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_event)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_details)
         binding.data = detailsData
 
         recyclerView = binding.include.authorMoreList
