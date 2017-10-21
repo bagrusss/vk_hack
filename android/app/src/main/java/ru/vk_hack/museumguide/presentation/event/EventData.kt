@@ -5,7 +5,7 @@ import android.databinding.ObservableField
 /**
  * Created by bagrusss on 21.10.17
  */
-class EventsData {
+class EventData {
     val title = ObservableField<String>()
     val dates = ObservableField<String>()
     val location = ObservableField<String>()

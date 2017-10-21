@@ -3,6 +3,7 @@ package ru.vk_hack.museumguide.presentation.feed
 import ru.vk_hack.museumguide.data.models.FeedEvent
 import ru.vk_hack.museumguide.databinding.EventItemBinding
 import ru.vk_hack.museumguide.presentation.details.DetailsActivity
+import ru.vk_hack.museumguide.presentation.event.EventDetailsActivity
 import ru.vk_hack.museumguide.presentation.list.DataBindingViewHolder
 import ru.vk_hack.museumguide.utils.ImageUtils
 
@@ -28,7 +29,7 @@ class FeedViewHolder(binding: EventItemBinding): DataBindingViewHolder<EventItem
     }
 
     override fun onFeedItemClicked(event: FeedEvent) {
-        DetailsActivity.start(binding.root.context, event)
+        EventDetailsActivity.start(binding.root.context, event)
     }
 
 }

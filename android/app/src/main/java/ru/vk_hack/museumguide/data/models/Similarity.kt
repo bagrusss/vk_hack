@@ -7,6 +7,6 @@ import com.google.gson.annotations.SerializedName
  * email@nikonorov.net
  */
 data class Similarity(
-        @SerializedName("url") val url: String,
+        val url: String,
         @SerializedName("picture_url") val pictureUrl: String
 )

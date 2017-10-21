@@ -7,12 +7,13 @@
 
         <variable
             name="data"
-            type="ru.vk_hack.museumguide.presentation.event.EventsData" />
+            type="ru.vk_hack.museumguide.presentation.event.EventData" />
     </data>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="ru.vk_hack.museumguide.presentation.event.EventDetailsActivity">
 
