@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Museum guide</string>
     <string name="recognize">Узнать что это</string>
+    <string name="events">События</string>
 </resources>
