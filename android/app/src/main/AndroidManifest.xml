@@ -14,8 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".presentation.feed.FeedActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/events">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +25,7 @@
         <activity
             android:name=".presentation.details.DetailsActivity"
             android:label="@string/title_activity_event"
+            android:screenOrientation="portrait"
             android:parentActivityName="android.support.v7.app.AppCompatActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -45,6 +46,7 @@
         <activity
             android:name=".presentation.event.EventDetailsActivity"
             android:label="@string/title_activity_event_details"
+            android:screenOrientation="portrait"
             android:parentActivityName="android.support.v7.app.AppCompatActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
