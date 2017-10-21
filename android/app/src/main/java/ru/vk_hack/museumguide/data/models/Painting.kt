@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName
 
 data class Painting(
         @SerializedName("id") val id: String,
-        @SerializedName("author") val author: String,
         @SerializedName("title") val title: String,
         @SerializedName("image") val pictureUrl: String,
         @SerializedName("years") val years: String,

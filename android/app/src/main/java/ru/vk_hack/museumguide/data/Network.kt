@@ -5,6 +5,7 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -20,7 +21,8 @@ class Network {
     companion object {
         val API_BASE_URL = "http://92.53.103.58"
 
-        private val httpClient = OkHttpClient.Builder()
+        private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        private val httpClient = OkHttpClient.Builder().addInterceptor(logging)
 
         private val builder = Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
@@ -30,10 +32,11 @@ class Network {
 
         @JvmStatic
         fun uploadPhoto(path : String) : Observable<RecognizeResponse> {
+//            val map = hashMapOf<String, @JvmSuppressWildcards Any>()
             val file = File(path)
-            val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
-            val body = MultipartBody.Part.createFormData("name", file.name, requestFile)
-            return api.uploadPhoto("/painting", body)
+            val requestFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
+            val body = MultipartBody.Part.createFormData("file", path, requestFile)
+            return api.uploadPhoto(body)
         }
 
         @JvmStatic
