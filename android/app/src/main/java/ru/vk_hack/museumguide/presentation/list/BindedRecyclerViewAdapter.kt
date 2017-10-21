@@ -14,4 +14,6 @@ abstract class BindedRecyclerViewAdapter<VH: DataBindingViewHolder<*, D>, D>: Re
         holder.onBind(data)
     }
 
+    abstract fun swap(items: List<D>)
+
 }

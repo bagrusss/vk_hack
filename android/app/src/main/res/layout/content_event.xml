@@ -13,14 +13,66 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/audio_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Аудиогид"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_layout" />
+
         <ImageView
-            android:id="@+id/author_image"
+            android:id="@+id/full_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:tint="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_home_black_24dp" />
+
+        <LinearLayout
+            android:id="@+id/full_title_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/full_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/full_title"
+            app:layout_constraintTop_toTopOf="@+id/full_title"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Название"
+                android:textColor="@color/colorAccent"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Это полное очень длинное название экспоната, картины"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/author_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:tint="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/full_title"
+            app:layout_constraintTop_toBottomOf="@+id/full_title_layout"
             app:srcCompat="@drawable/ic_home_black_24dp" />
 
         <LinearLayout
@@ -30,7 +82,6 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:background="?attr/selectableItemBackground"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/author_image"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,13 +93,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Автор"
-                android:textColor="@color/black_title"
+                android:textColor="@color/colorAccent"
                 android:textSize="13sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Петр Петров" />
+                android:text="Петр Петров"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <ImageView
@@ -56,6 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:tint="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/author_image"
             app:layout_constraintTop_toBottomOf="@+id/author_layout"
             app:srcCompat="@drawable/ic_notifications_black_24dp" />
@@ -67,7 +120,6 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:background="?attr/selectableItemBackground"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/location_image"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,13 +131,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Местоположение"
-                android:textColor="@color/black_title"
+                android:textColor="@color/colorAccent"
                 android:textSize="13sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Новая Третьяковка" />
+                android:text="Новая Третьяковка"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <ImageView
@@ -93,6 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:tint="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/location_image"
             app:layout_constraintTop_toBottomOf="@+id/location_layout"
             app:srcCompat="@drawable/ic_dashboard_black_24dp" />
@@ -104,7 +158,6 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:background="?attr/selectableItemBackground"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/description_image"
             app:layout_constraintEnd_toEndOf="parent"
@@ -116,16 +169,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Описание"
-                android:textColor="@color/black_title"
+                android:textColor="@color/colorAccent"
                 android:textSize="13sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="А.А. Дейнека. Площадь Свердлова. 1941–1946. Серия «Москва военная». Бумага, гуашь, темпера, уголь. 67 х 81,7. Третьяковская галерея" />
+                android:text="А.А. Дейнека. Площадь Свердлова. 1941–1946. Серия «Москва военная». Бумага, гуашь, темпера, уголь. 67 х 81,7. Третьяковская галерея"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -133,18 +188,20 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description_layout">
+            app:layout_constraintTop_toBottomOf="@+id/audio_button">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
+                android:background="@color/black_background"
+                android:orientation="vertical"
+                android:padding="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Еще от Петра Петрова"
+                    android:textColor="@android:color/white"
                     android:textSize="16sp" />
 
                 <android.support.v7.widget.RecyclerView
@@ -157,11 +214,5 @@
         </android.support.v7.widget.CardView>
 
     </android.support.constraint.ConstraintLayout>
-
-    <!--    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="@string/large_text" />-->
 
 </android.support.v4.widget.NestedScrollView>
