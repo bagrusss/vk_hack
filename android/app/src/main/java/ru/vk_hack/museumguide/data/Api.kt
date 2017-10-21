@@ -15,7 +15,7 @@ interface Api {
     @Multipart
     @POST
     fun uploadPhoto(@Url url: String,
-                         @Part file: MultipartBody.Part): Observable<RecognizeResponse>
+                    @Part("file") file: MultipartBody.Part): Observable<RecognizeResponse>
 
     @GET("/painting")
     fun getPaintings(): Observable<List<Painting>>

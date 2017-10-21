@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -16,6 +17,7 @@ import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import ru.vk_hack.museumguide.BuildConfig
 import ru.vk_hack.museumguide.R
 import ru.vk_hack.museumguide.data.Network
 import ru.vk_hack.museumguide.databinding.ActivityFeedBinding
@@ -63,18 +65,19 @@ class FeedActivity : AppCompatActivity() {
         return
     }
 
-    var file : File? = null
+    private lateinit var file : File
     private fun recognizeFile() {
-        file = File(getFilesDir(), "my_images/" + System.currentTimeMillis().toString())
+        file = File(filesDir, "my_images/" + System.currentTimeMillis().toString())
         val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, file)
         startActivityForResult(cameraIntent, CAMERA_REQUEST_FILE)
     }
 
     private fun recognizeBase() {
-        file = File(getFilesDir(), System.currentTimeMillis().toString())
+        file = File(filesDir, System.currentTimeMillis().toString())
+        val uri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, file)
         val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, file)
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
         startActivityForResult(cameraIntent, CAMERA_REQUEST_BASE)
     }
 
@@ -82,23 +85,19 @@ class FeedActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         when(requestCode) {
             CAMERA_REQUEST_BASE -> {
-                if (data == null) return
-                val extras = data.extras
-                val imageBitmap = extras.get("data") as Bitmap
-                val shifed = ImageUtils.convert(imageBitmap)
                 Network
-                        .uploadPhoto(file!!.path)
+                        .uploadPhoto(file.absolutePath)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ it ->
-                            System.out.print(it.toString())
+                            Log.d("res", it.toString())
                         }, { error ->
                             error.printStackTrace()
                         })
             }
             CAMERA_REQUEST_FILE -> {
                 Network
-                        .uploadPhoto(file!!.path)
+                        .uploadPhoto(file.absolutePath)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ it ->

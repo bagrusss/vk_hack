@@ -29,10 +29,10 @@ class Network {
         private val api = builder.client(httpClient.build()).build().create(Api::class.java)
 
         @JvmStatic
-        public fun uploadPhoto(path : String) : Observable<RecognizeResponse> {
+        fun uploadPhoto(path : String) : Observable<RecognizeResponse> {
             val file = File(path)
             val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
-            val body = MultipartBody.Part.createFormData("name", file.getName(), requestFile)
+            val body = MultipartBody.Part.createFormData("name", file.name, requestFile)
             return api.uploadPhoto("/painting", body)
         }
 

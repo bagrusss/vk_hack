@@ -93,4 +93,8 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="audio_guide">Аудиогид</string>
+    <string name="title">Название</string>
+    <string name="description">Описание</string>
+    <string name="location">Местоположение</string>
 </resources>
