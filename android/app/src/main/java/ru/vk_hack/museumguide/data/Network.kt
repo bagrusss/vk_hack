@@ -8,6 +8,7 @@ import okhttp3.RequestBody
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.vk_hack.museumguide.data.models.Painting
 import ru.vk_hack.museumguide.data.models.RecognizeResponse
 import java.io.File
 
@@ -26,12 +27,18 @@ class Network {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
         private val api = builder.client(httpClient.build()).build().create(Api::class.java)
+
         @JvmStatic
         public fun uploadPhoto(path : String) : Observable<RecognizeResponse> {
             val file = File(path)
             val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
             val body = MultipartBody.Part.createFormData("name", file.getName(), requestFile)
             return api.uploadPhoto("/painting", body)
+        }
+
+        @JvmStatic
+        public fun getPaintings() : Observable<List<Painting>> {
+            return api.getPaintings()
         }
     }
 }

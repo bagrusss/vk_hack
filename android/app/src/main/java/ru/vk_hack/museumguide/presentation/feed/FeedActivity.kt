@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -52,6 +53,13 @@ class FeedActivity : AppCompatActivity() {
             }
             return
         }
+//        disposables.add(Network
+//                .getPaintings()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({it -> Log.i("TAG", it.toString())},
+//                        { error -> error.printStackTrace()}
+//        ))
         return
     }
 
@@ -89,8 +97,6 @@ class FeedActivity : AppCompatActivity() {
                         })
             }
             CAMERA_REQUEST_FILE -> {
-                if (data == null) return
-                file //
                 Network
                         .uploadPhoto(file!!.path)
                         .subscribeOn(Schedulers.io())

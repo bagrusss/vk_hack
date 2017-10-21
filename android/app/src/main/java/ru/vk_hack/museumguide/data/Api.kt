@@ -2,10 +2,8 @@ package ru.vk_hack.museumguide.data
 
 import io.reactivex.Observable
 import okhttp3.MultipartBody
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
-import retrofit2.http.Url
+import retrofit2.http.*
+import ru.vk_hack.museumguide.data.models.Painting
 import ru.vk_hack.museumguide.data.models.RecognizeResponse
 
 /**
@@ -18,5 +16,8 @@ interface Api {
     @POST
     fun uploadPhoto(@Url url: String,
                          @Part file: MultipartBody.Part): Observable<RecognizeResponse>
+
+    @GET("/painting")
+    fun getPaintings(): Observable<List<Painting>>
 
 }
