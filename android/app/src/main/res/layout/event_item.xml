@@ -6,6 +6,14 @@
         <variable
             name="data"
             type="ru.vk_hack.museumguide.presentation.feed.FeedData" />
+
+        <variable
+            name="listener"
+            type="ru.vk_hack.museumguide.presentation.feed.ItemListener" />
+
+        <variable
+            name="feedEvent"
+            type="ru.vk_hack.museumguide.data.models.FeedEvent" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,6 +29,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="8dp"
             android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> listener.onFeedItemClicked(feedEvent)}"
             app:cardCornerRadius="3dp"
             app:cardElevation="3dp">
 
