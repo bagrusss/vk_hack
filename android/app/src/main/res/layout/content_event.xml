@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Название"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/colorAccent"
                 android:textSize="13sp" />
 
             <TextView
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Автор"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/colorAccent"
                 android:textSize="13sp" />
 
             <TextView
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Местоположение"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/colorAccent"
                 android:textSize="13sp" />
 
             <TextView
@@ -169,7 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Описание"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/colorAccent"
                 android:textSize="13sp" />
 
             <TextView
