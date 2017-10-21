@@ -33,7 +33,7 @@
             android:ellipsize="end"
             android:gravity="left"
             android:maxLines="2"
-            android:text="@{data.title}"
+            android:text="@{data.author}"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/imageView"

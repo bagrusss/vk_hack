@@ -17,7 +17,7 @@ class DetailsItemViewHolder(binding: DetailsItemBinding) : DataBindingViewHolder
     }
 
     override fun onBind(data: ImageItem) {
-        bindingData.title.set(data.title)
+        bindingData.author.set(data.title)
         ImageUtils.loadImage(binding.imageView, data.pictureUrl)
     }
 

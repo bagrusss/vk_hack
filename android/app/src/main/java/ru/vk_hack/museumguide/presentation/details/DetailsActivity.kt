@@ -10,13 +10,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.event_content.view.*
 import ru.vk_hack.museumguide.R
 import ru.vk_hack.museumguide.data.models.FeedEvent
 import ru.vk_hack.museumguide.databinding.ActivityEventBinding
 import ru.vk_hack.museumguide.utils.ImageUtils
 
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity(), DetailsListener {
 
     private lateinit var binding: ActivityEventBinding
 
@@ -25,28 +24,42 @@ class DetailsActivity : AppCompatActivity() {
 
     private val imagesAdapter = DetailsAdapter()
 
+    private val detailsData = DetailsData()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_event)
-        recyclerView = binding.include.author_more_list
+        binding.data = detailsData
+
+        recyclerView = binding.include.authorMoreList
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = imagesAdapter
 
         toolbar = binding.toolbar
 
         setSupportActionBar(toolbar)
-        binding.fab.setOnClickListener { view ->
+        /*binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", {
 
                     })
                     .show()
-        }
+        }*/
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         intent.getSerializableExtra(KEY_DATA)?.let {
             fillDataEvent(it as FeedEvent)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.listener = this
+    }
+
+    override fun onStop() {
+        binding.listener = null
+        super.onStop()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -55,6 +68,14 @@ class DetailsActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onAudioClicked() {
+
+    }
+
+    override fun onFabClicked() {
+
     }
 
     private fun fillDataEvent(event: FeedEvent) {
