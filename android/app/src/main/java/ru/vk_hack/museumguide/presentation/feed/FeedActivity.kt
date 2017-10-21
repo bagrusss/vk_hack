@@ -85,26 +85,28 @@ class FeedActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         when(requestCode) {
             CAMERA_REQUEST_BASE -> {
-                Network
-                        .uploadPhoto(file.absolutePath)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ it ->
-                            Log.d("res", it.toString())
-                        }, { error ->
-                            error.printStackTrace()
-                        })
+                val disposable = Network.uploadPhoto(file.absolutePath)
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe({ it ->
+                                            Log.d("res", it.toString())
+                                        }, { error ->
+                                            error.printStackTrace()
+                                        })
+                disposables.add(disposable)
             }
             CAMERA_REQUEST_FILE -> {
-                Network
-                        .uploadPhoto(file.absolutePath)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ it ->
-                            System.out.print(it.toString())
-                        }, { error ->
-                            error.printStackTrace()
-                        })
+                if (data == null) return
+                file //
+                val disposable = Network.uploadPhoto(file.absolutePath)
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe({ it ->
+                                            System.out.print(it.toString())
+                                        }, { error ->
+                                            error.printStackTrace()
+                                        })
+                disposables.add(disposable)
             }
         }
     }
