@@ -29,9 +29,14 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs './libs'
+    }
+}
+
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"
@@ -52,6 +57,9 @@ dependencies {
 
 
     implementation 'com.github.bumptech.glide:glide:3.8.0'
+
+    implementation (name: 'arcore_client', ext: 'aar')
+    implementation (name: 'obj-0.2.1', ext: 'jar')
 
     kapt 'com.android.databinding:compiler:2.3.3'
 

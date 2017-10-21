@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import ru.vk_hack.museumguide.R
 import ru.vk_hack.museumguide.databinding.ActivityFeedBinding
+import ru.vk_hack.museumguide.presentation.ar.ARActivity
 
 
 class FeedActivity : AppCompatActivity() {
@@ -22,7 +23,8 @@ class FeedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_feed)
         binding.recognizeBtn.setOnClickListener {
-            recognize()
+//            recognize()
+            startActivity(Intent(this, ARActivity::class.java))
         }
         feedRecycler = binding.feedList
         feedRecycler.layoutManager = LinearLayoutManager(this)
