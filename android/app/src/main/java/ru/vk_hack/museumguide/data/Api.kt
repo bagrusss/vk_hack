@@ -6,7 +6,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Url
-import ru.vk_hack.museumguide.data.entity.RecognizeResponse
+import ru.vk_hack.museumguide.data.models.RecognizeResponse
 
 /**
  * Created by Vitaly Nikonorov on 21.10.17.

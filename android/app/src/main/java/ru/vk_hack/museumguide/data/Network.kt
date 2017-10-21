@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.vk_hack.museumguide.data.entity.RecognizeResponse
+import ru.vk_hack.museumguide.data.models.RecognizeResponse
 import java.io.File
 
 /**

@@ -1,4 +1,4 @@
-package ru.vk_hack.museumguide.data.entity
+package ru.vk_hack.museumguide.data.models
 
 import com.google.gson.annotations.SerializedName
 import java.util.*
