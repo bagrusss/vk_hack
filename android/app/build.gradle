@@ -17,16 +17,32 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file('../keystore')
+            storePassword "uuups"
+            keyAlias "vk_hack"
+            keyPassword "uuups"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+
+            signingConfig signingConfigs.release
+
         }
     }
 
     dataBinding {
         enabled = true
     }
+
+
 }
 
 
