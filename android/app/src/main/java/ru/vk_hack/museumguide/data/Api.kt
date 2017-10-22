@@ -4,6 +4,8 @@ import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
+import ru.vk_hack.museumguide.data.models.EventsResponse
+import ru.vk_hack.museumguide.data.models.FeedEvent
 import ru.vk_hack.museumguide.data.models.Painting
 import ru.vk_hack.museumguide.data.models.RecognizeResponse
 
@@ -19,5 +21,8 @@ interface Api {
 
     @GET("/painting")
     fun getPaintings(): Observable<List<Painting>>
+
+    @GET("/recognition/program")
+    fun getEvents(): Observable<EventsResponse>
 
 }

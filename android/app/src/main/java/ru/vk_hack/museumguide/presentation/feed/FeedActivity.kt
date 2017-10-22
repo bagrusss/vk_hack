@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -23,8 +24,6 @@ import ru.vk_hack.museumguide.R
 import ru.vk_hack.museumguide.data.Network
 import ru.vk_hack.museumguide.databinding.ActivityFeedBinding
 import ru.vk_hack.museumguide.presentation.details.DetailsActivity
-import ru.vk_hack.museumguide.presentation.event.EventDetailsActivity
-import ru.vk_hack.museumguide.utils.ImageUtils
 import java.io.File
 
 
@@ -36,6 +35,9 @@ class FeedActivity : AppCompatActivity() {
 
     private val adapter = FeedAdapter()
     private val disposables = CompositeDisposable()
+
+    private lateinit var file : File
+    private lateinit var progress : ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,18 +60,29 @@ class FeedActivity : AppCompatActivity() {
             }
             return
         }
-//        disposables.add(Network
-//                .getPaintings()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe({it -> Log.i("TAG", it.toString())},
-//                        { error -> error.printStackTrace()}
-//        ))
-        return
+
+        loadEvents()
     }
 
-    private lateinit var file : File
-    private lateinit var progress : ProgressDialog
+    private fun loadEvents() {
+        progress = ProgressDialog(this).apply {
+            setMessage("Загрузка событий...")
+            show()
+        }
+
+        val disposable = Network.getEvents()
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe({
+                                    adapter.swap(it.data)
+                                    progress.dismiss()
+                                }, {
+                                    Toast.makeText(this@FeedActivity, "Что-то пошло не так", Toast.LENGTH_LONG).show()
+                                    progress.dismiss()
+                                })
+        disposables.add(disposable)
+    }
+
     private fun recognizeFile() {
         file = File(filesDir, "my_images/" + System.currentTimeMillis().toString())
         val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)

@@ -12,25 +12,11 @@ import ru.vk_hack.museumguide.presentation.list.BindedRecyclerViewAdapter
  */
 class FeedAdapter : BindedRecyclerViewAdapter<FeedViewHolder, FeedEvent>() {
 
-    private var items = listOf(FeedEvent(picture = "https://www.tretyakovgallery.ru/upload/iblock/951/95170e80eebc1f942139bf69536af350.jpg",
-                                         title = "Город и люди. Москва в графике ХХ века",
-                                         location = "Новая Третьяковка",
-                                         description = "А.А. Дейнека. Площадь Свердлова. 1941–1946. Серия «Москва военная». Бумага, гуашь, темпера, уголь. 67 х 81,7. Третьяковская галерея",
-                                         dates = "1 октября 2017 - 28 января 2018"),
-                               FeedEvent(picture = "https://www.tretyakovgallery.ru/upload/iblock/951/95170e80eebc1f942139bf69536af350.jpg",
-                                         title = "Город и люди. Москва в графике ХХ века",
-                                         location = "Новая Третьяковка",
-                                         description = "А.А. Дейнека. Площадь Свердлова. 1941–1946. Серия «Москва военная». Бумага, гуашь, темпера, уголь. 67 х 81,7. Третьяковская галерея",
-                                         dates = "1 октября 2017 - 28 января 2018"),
-                               FeedEvent(picture = "https://www.tretyakovgallery.ru/upload/iblock/951/95170e80eebc1f942139bf69536af350.jpg",
-                                         title = "Город и люди. Москва в графике ХХ века",
-                                         location = "Новая Третьяковка",
-                                         description = "А.А. Дейнека. Площадь Свердлова. 1941–1946. Серия «Москва военная». Бумага, гуашь, темпера, уголь. 67 х 81,7. Третьяковская галерея",
-                                         dates = "1 октября 2017 - 28 января 2018"))
-
+    private var items = emptyList<FeedEvent>()
 
     override fun swap(items: List<FeedEvent>) {
         this.items = items
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = items.size

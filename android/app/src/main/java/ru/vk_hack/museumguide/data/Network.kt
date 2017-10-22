@@ -17,22 +17,24 @@ import java.io.File
  * Created by Vitaly Nikonorov on 21.10.17.
  * email@nikonorov.net
  */
-class Network {
-    companion object {
-        val API_BASE_URL = "http://92.53.103.58"
+object Network {
+
+        private const val API_BASE_URL = "http://92.53.103.58"
 
         private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         private val httpClient = OkHttpClient.Builder().addInterceptor(logging)
 
         private val builder = Retrofit.Builder()
-                .baseUrl(API_BASE_URL)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-        private val api = builder.client(httpClient.build()).build().create(Api::class.java)
+                                      .baseUrl(API_BASE_URL)
+                                      .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                                      .addConverterFactory(GsonConverterFactory.create())
+
+        private val api = builder.client(httpClient.build())
+                                 .build()
+                                 .create(Api::class.java)
 
         @JvmStatic
         fun uploadPhoto(path : String) : Observable<RecognizeResponse> {
-//            val map = hashMapOf<String, @JvmSuppressWildcards Any>()
             val file = File(path)
             val requestFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
             val body = MultipartBody.Part.createFormData("file", path, requestFile)
@@ -40,8 +42,8 @@ class Network {
         }
 
         @JvmStatic
-        public fun getPaintings() : Observable<List<Painting>> {
-            return api.getPaintings()
-        }
-    }
+        fun getPaintings() = api.getPaintings()
+
+        @JvmStatic
+        fun getEvents() = api.getEvents()
 }
